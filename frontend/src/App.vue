@@ -1,31 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <h1 class="name">gait.fun</h1>
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
 </template>
 
 <script lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import './assets/app.css'
-import data from './assets/peter.json'
-// 添加ts代码
-const peter:string = 'gati.fun'
+import { defineComponent } from 'vue';
+import HelloWorld from './components/HelloWorld.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
     HelloWorld
-  },
-  // 验证ts是否work
-  mounted(){
-    console.log(peter)
-    console.log(data.name + '|' + data.website)
-  },
-}
+  }
+});
 </script>
 
-<style lang="scss">
-.name{
-  color: green;
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

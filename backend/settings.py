@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 
-import mimetypes
+# import mimetypes
 from pathlib import Path
 
 STATIC_URL = '/static/'
@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-^4i7#a!2mvmi5t^pa016r)o0&j@y)kr6fymmsj=&_1(ts7i$gj
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/dist').replace('\\', '/')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,16 +128,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Add for vuejs
-#STATIC_ROOT = os.path.join(BASE_DIR, r"frontend/dist/static")
+# STATIC_ROOT = os.path.join(BASE_DIR, r"frontend/dist/static")
 # STATIC_ROOT = os.path.join(BASE_DIR, r"frontend/dist/static/")
 # STATIC_ROOT = os.path.join(BASE_DIR, r"frontend/dist/")
 # STATIC_ROOT = os.path.join(BASE_DIR, r"frontend/dist")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "frontend/dist/static"),
+    os.path.join(BASE_DIR, "frontend/dist/static/"),
 ]
+# if DEBUG is False:
+#     # STATIC_ROOT = os.path.join(BASE_DIR, "frontend/dist/static")
+#     # STATIC_ROOT = "frontend/dist/static"
+#     STATIC_ROOT = "static"
+#     STATICFILES_DIRS = [
+#         os.path.join(BASE_DIR, "frontend/dist/static/"),
+#     ]
+# print(STATIC_ROOT)
+# print(STATICFILES_DIRS)
 
-mimetypes.add_type("application/javascript", ".js", True)
 
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-}
+# mimetypes.add_type("application/javascript", ".js", True)
+#
+# DEBUG_TOOLBAR_CONFIG = {
+#     'INTERCEPT_REDIRECTS': False,
+# }
