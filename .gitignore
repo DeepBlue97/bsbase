@@ -1,2 +1,3 @@
 /.idea
 /bsbase/__pycache__/*.pyc
+/backend/__pycache__/*.pyc
