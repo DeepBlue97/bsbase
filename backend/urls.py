@@ -20,13 +20,16 @@ from django.views.static import serve as serve_static
 # from backend.settings import STATICFILES_DIRS, STATIC_ROOT
 # from django.views import static
 from django.conf import settings
+from .views import testjson
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('/', TemplateView.as_view(template_name="index.html")),
     # path('static/<path:path>', serve_static, {'document_root': STATIC_ROOT},),  # 处理静态文件
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('api/', testjson),
+    #path('', TemplateView.as_view(template_name='index.html')),
     path(r'^static/(?P<path>.*)$', serve_static, {'document_root': settings.STATIC_ROOT}, name='static'),
+    
 ]
 
 # urlpatterns = [
