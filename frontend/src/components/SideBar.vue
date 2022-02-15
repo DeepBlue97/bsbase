@@ -1,5 +1,5 @@
 <template>
-<!-- <el-menu
+  <el-menu
     :default-active="activeIndex"
     class="el-menu-demo"
     mode="horizontal"
@@ -21,7 +21,7 @@
     <el-menu-item index="3" disabled>Info</el-menu-item>
     <el-menu-item index="4">Orders</el-menu-item>
   </el-menu>
-  <div class="h-6"></div> -->
+  <div class="h-6"></div>
   <el-menu
     :default-active="activeIndex2"
     class="el-menu-demo"
@@ -47,59 +47,14 @@
     <el-menu-item index="3" disabled>Info</el-menu-item>
     <el-menu-item index="4">Orders</el-menu-item>
   </el-menu>
-
-  <div class="hello">
-    <el-row class="mb-4">
-      <el-button>Default</el-button>
-      <el-button type="primary">Primary</el-button>
-      <el-button type="success">Success</el-button>
-      <el-button type="info">Info</el-button>
-      <el-button type="warning">Warning</el-button>
-      <el-button type="danger">Danger</el-button>
-      <el-button>中文</el-button>
-    </el-row>
-
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
-      >.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    
-  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import {
-  Search,
-  Edit,
-  Check,
-  Message,
-  Star,
-  Delete,
-} from "@element-plus/icons-vue";
+<script lang="ts" setup>
+import { ref } from 'vue'
 
-export default defineComponent({
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
-});
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-:root {
-  --el-color-primary: #409eff;
-  --el-color-success: #67c23a;
-  --el-color-warning: #e6a23c;
-  --el-color-danger: #f56c6c;
-  --el-color-error: #f56c6c;
-  --el-color-info: #909399;
+const activeIndex = ref('1')
+const activeIndex2 = ref('1')
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
 }
-
-</style>
+</script>
