@@ -1,105 +1,64 @@
 <template>
-<!-- <el-menu
-    :default-active="activeIndex"
-    class="el-menu-demo"
-    mode="horizontal"
-    @select="handleSelect"
-  >
-    <el-menu-item index="1">Processing Center</el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>Workspace</template>
-      <el-menu-item index="2-1">item one</el-menu-item>
-      <el-menu-item index="2-2">item two</el-menu-item>
-      <el-menu-item index="2-3">item three</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
-  </el-menu>
-  <div class="h-6"></div> -->
-  <el-menu
-    :default-active="activeIndex2"
-    class="el-menu-demo"
-    mode="horizontal"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
-    @select="handleSelect"
-  >
-    <el-menu-item index="1">Processing Center</el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>Workspace</template>
-      <el-menu-item index="2-1">item one</el-menu-item>
-      <el-menu-item index="2-2">item two</el-menu-item>
-      <el-menu-item index="2-3">item three</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
-  </el-menu>
-
   <div class="hello">
-    <el-row class="mb-4">
-      <el-button>Default</el-button>
-      <el-button type="primary">Primary</el-button>
-      <el-button type="success">Success</el-button>
-      <el-button type="info">Info</el-button>
-      <el-button type="warning">Warning</el-button>
-      <el-button type="danger">Danger</el-button>
-      <el-button>中文</el-button>
-    </el-row>
-
     <h1>{{ msg }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br />
+      For a guide and recipes on how to configure / customize this project,<br>
       check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
-      >.
+      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
     <h3>Installed CLI Plugins</h3>
-    
+    <ul>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
+    </ul>
+    <h3>Essential Links</h3>
+    <ul>
+      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
+      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
+      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
+      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+    </ul>
+    <h3>Ecosystem</h3>
+    <ul>
+      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
+      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
+      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
+      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import {
-  Search,
-  Edit,
-  Check,
-  Message,
-  Star,
-  Delete,
-} from "@element-plus/icons-vue";
+import { Options, Vue } from 'vue-class-component';
 
-export default defineComponent({
-  name: "HelloWorld",
+@Options({
   props: {
-    msg: String,
-  },
-});
+    msg: String
+  }
+})
+export default class HelloWorld extends Vue {
+  msg!: string
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-:root {
-  --el-color-primary: #409eff;
-  --el-color-success: #67c23a;
-  --el-color-warning: #e6a23c;
-  --el-color-danger: #f56c6c;
-  --el-color-error: #f56c6c;
-  --el-color-info: #909399;
+h3 {
+  margin: 40px 0 0;
 }
-
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
 </style>
