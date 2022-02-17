@@ -23,6 +23,7 @@
         :name="item.name"
       >
         {{ item.content }}
+        <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
       </el-tab-pane>
     </el-tabs>
 
@@ -32,81 +33,46 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+// import { Options, Vue } from "vue-class-component";
+import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 // import Navigation from '@/components/Navigation.vue'; // @ is an alias to /src
-import { ref } from "vue";
+import { ref, toRefs, defineComponent } from "vue";
 
-// let tabIndex = 2
-// const editableTabsValue = ref('2')
-
-const editableTabs = ref([
-  {
-    title: "Tab 1",
-    name: "1",
-    content: "Tab 1 content",
-  },
-  {
-    title: "Tab 2",
-    name: "2",
-    content: "Tab 2 content",
-  },
-]);
-
-// const addTab = (targetName: string) => {
-//   const newTabName = `${++tabIndex}`;
-//   editableTabs.value.push({
-//     title: "New Tab",
-//     name: newTabName,
-//     content: "New Tab content",
-//   });
-//   editableTabsValue.value = newTabName;
-// };
-
-// const removeTab = (targetName: string) => {
-//   const tabs = editableTabs.value;
-//   let activeName = editableTabsValue.value;
-//   if (activeName === targetName) {
-//     tabs.forEach((tab, index) => {
-//       if (tab.name === targetName) {
-//         const nextTab = tabs[index + 1] || tabs[index - 1];
-//         if (nextTab) {
-//           activeName = nextTab.name;
-//         }
-//       }
-//     });
-//   }
-
-//   editableTabsValue.value = activeName;
-//   editableTabs.value = tabs.filter((tab) => tab.name !== targetName);
-// };
-
-@Options({
+// @Options({
+export default defineComponent({
   components: {
-    // HelloWorld,
+    HelloWorld,
   },
-  data() {
-    return {
-      tabIndex: 2,
-      editableTabsValue: ref("2"),
-    //   editableTabs: ref([
-    //     {
-    //       title: "Tab 1",
-    //       name: "1",
-    //       content: "Tab 1 content",
-    //     },
-    //     {
-    //       title: "Tab 2",
-    //       name: "2",
-    //       content: "Tab 2 content",
-    //     },
-    //   ]),
+  setup() {
+    let tabIndex = 2;
+    const editableTabsValue = ref("2");
+
+    const editableTabs = ref([
+      {
+        title: "Tab 1",
+        name: "1",
+        content: "Tab 1 content",
+      },
+      {
+        title: "Tab 2",
+        name: "2",
+        content: "Tab 2 content",
+      },
+    ]);
+
+    const addTab = (targetName: string) => {
+      const newTabName = `${++tabIndex}`;
+      editableTabs.value.push({
+        title: "New Tab",
+        name: newTabName,
+        // content: "New Tab content",
+        content: "<HelloWorld/>",
+      });
+      editableTabsValue.value = newTabName;
     };
-  },
-  methods: {
-    removeTab(targetName: string) {
+    const removeTab = (targetName: string) => {
       const tabs = editableTabs.value;
-      let activeName = this.editableTabsValue.value;
+      let activeName = editableTabsValue.value;
       if (activeName === targetName) {
         tabs.forEach((tab, index) => {
           if (tab.name === targetName) {
@@ -117,22 +83,24 @@ const editableTabs = ref([
           }
         });
       }
-
-      this.editableTabsValue.value = activeName;
+      editableTabsValue.value = activeName;
       editableTabs.value = tabs.filter((tab) => tab.name !== targetName);
-    },
-    addTab(targetName: string) {
-      const newTabName = `${++this.tabIndex}`;
-      editableTabs.value.push({
-        title: "New Tab",
-        name: newTabName,
-        content: "New Tab content",
-      });
-      this.editableTabsValue.value = newTabName;
-    },
+    };
+    return {
+      // ...toRefs(tabIndex),
+      editableTabsValue,
+      editableTabs,
+      addTab,
+      removeTab,
+    };
   },
-})
-export default class LabelManager extends Vue {}
+  data() {
+    return {};
+  },
+  methods: {},
+});
+
+// export default class LabelManager extends Vue {}
 </script>
 
 <style>
