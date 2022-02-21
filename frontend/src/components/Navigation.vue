@@ -1,40 +1,60 @@
 <template>
   <el-container>
     <!-- <div id="nav"> -->
-      <el-aside width="200px">
-        <el-menu
-          active-text-color="#ffd04b"
-          background-color="#545c64"
-          class="el-menu-vertical-demo"
-          default-active="2"
-          text-color="#fff"
-          @open="handleOpen"
-          @close="handleClose"
-        >
-          <el-sub-menu index="1">
-            <template #title>
-              <el-icon><picture-filled /></el-icon>
-              <span>图片标注</span>
-            </template>
-            <router-link to="/labeltask"><el-menu-item index="1-1"><el-icon><list /></el-icon><span>标注任务</span></el-menu-item
-            ></router-link>
-            <router-link to="/labelmanager"><el-menu-item index="1-2"><el-icon><price-tag /></el-icon>标签管理</el-menu-item
-            ></router-link>
-          </el-sub-menu>
-          <el-menu-item index="2">
-            <el-icon><user-filled /></el-icon>
-            <span>Navigator Two</span>
+    <el-aside width="200px">
+      <el-menu
+        active-text-color="#ffd04b"
+        background-color="#545c64"
+        class="el-menu-vertical-demo"
+        default-active="2"
+        text-color="#fff"
+        @open="handleOpen"
+        @close="handleClose"
+      >
+        <router-link to="/">
+          <el-menu-item index="1">
+            <el-icon><home-filled /></el-icon><span>Home</span>
           </el-menu-item>
-          <el-menu-item index="3" disabled>
-            <el-icon><document /></el-icon>
-            <span>Navigator Three</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <el-icon><setting /></el-icon>
-            <span>Navigator Four</span>
-          </el-menu-item>
-        </el-menu>
-      </el-aside>
+        </router-link>
+        <!-- <el-sub-menu index="1">
+          <template #title>
+            <el-icon><home-filled /></el-icon>
+            <span>图片标注</span>
+          </template>
+          <router-link to="/labeltask"
+            ><el-menu-item index="1-1"
+              ><el-icon><list /></el-icon><span>标注任务</span></el-menu-item
+            ></router-link
+          >
+          <router-link to="/labelmanager"
+            ><el-menu-item index="1-2"
+              ><el-icon><price-tag /></el-icon>标签管理</el-menu-item
+            ></router-link
+          >
+        </el-sub-menu> -->
+
+        <el-sub-menu index="2">
+          <template #title>
+            <el-icon><picture-filled /></el-icon>
+            <span>图片标注</span>
+          </template>
+          <router-link to="/labeltask"
+            ><el-menu-item index="2-1"
+              ><el-icon><list /></el-icon><span>标注任务</span></el-menu-item
+            ></router-link
+          >
+          <router-link to="/labelmanager"
+            ><el-menu-item index="2-2"
+              ><el-icon><price-tag /></el-icon>标签管理</el-menu-item
+            ></router-link
+          >
+        </el-sub-menu>
+        <el-menu-item index="3">
+          <el-icon><user-filled /></el-icon>
+          <span>Navigator Two</span>
+        </el-menu-item>
+      </el-menu>
+    </el-aside>
     <!-- </div> -->
 
     <el-main><router-view /></el-main>
@@ -45,7 +65,13 @@
 import { defineComponent } from "vue";
 // import { Picture, Setting, Menu, Document } from "@element-plus/icons-vue";
 // import { Picture, } from "@element-plus/icons-vue";
-import { PictureFilled, List, PriceTag, UserFilled } from "@element-plus/icons-vue";
+import {
+  PictureFilled,
+  List,
+  PriceTag,
+  UserFilled,
+  HomeFilled,
+} from "@element-plus/icons-vue";
 
 // import { Edit } from "@element-plus/icons";
 
@@ -56,6 +82,7 @@ export default defineComponent({
     List,
     PriceTag,
     UserFilled,
+    HomeFilled,
     // Picture,
     // Location
     // Aim
@@ -71,7 +98,6 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 /* :root {
   --el-color-primary: #409eff;
   --el-color-success: #67c23a;
